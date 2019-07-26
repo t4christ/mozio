@@ -1,0 +1,12 @@
+dj-database-url
+Django
+django-cors-headers
+django-redis
+djangorestframework
+djangorestframework-jwt
+psycopg2-binary
+django-rest-swagger
+
+
+
+
