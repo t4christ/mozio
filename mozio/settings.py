@@ -109,7 +109,18 @@ if DEBUG:
     }
 }
 else:
-  DATABASES = {'default': dj_database_url.config(default='postgres://ylwoqsrkkdlvzm:f5e997bb689d28f7382925b2ce60d8fb9432a4cfbd115a9b9e92ff053271ae85@ec2-174-129-226-234.compute-1.amazonaws.com:5432/d65kngpfjjm8h6')}
+    
+   DATABASES = {
+        'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'd65kngpfjjm8h6',
+        'USER': 'ylwoqsrkkdlvzm',
+        'PASSWORD': 'f5e997bb689d28f7382925b2ce60d8fb9432a4cfbd115a9b9e92ff053271ae85',
+        'HOST': 'ec2-174-129-226-234.compute-1.amazonaws.com',
+        'PORT': '5432'
+    }
+}  
+  
 
 
 
