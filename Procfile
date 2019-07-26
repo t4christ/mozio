@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT imoh_api.wsgi:application  
+web: waitress-serve --port=$PORT mozio.wsgi:application  
