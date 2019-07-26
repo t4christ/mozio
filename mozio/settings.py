@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')px(xck&xknhi366030j*s-2(t-if*ua+-i%#f5!fg1wyuq&xe'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost','https://mozio-trans.herokuapp.com']
 
@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'mozio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 import dj_database_url
-if DEBUG:
+if not DEBUG:
     DATABASES = {
         'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
