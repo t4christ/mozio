@@ -97,9 +97,9 @@ WSGI_APPLICATION = 'mozio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-
-DATABASES = {
-    'default': {
+if DEBUG:
+    DATABASES = {
+        'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'mozio',
         'USER': 'mozio',
@@ -107,6 +107,12 @@ DATABASES = {
         'HOST': 'localhost',
         'PORT': '5432'
     }
+}
+else:
+    DATABASES = {
+    'default': dj_database_url.config(
+        default='DATABASE_URL'
+    )
 }
 
 
