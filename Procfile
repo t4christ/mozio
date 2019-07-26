@@ -1,0 +1,1 @@
+web: waitress-serve --port=$PORT imoh_api.wsgi:application  

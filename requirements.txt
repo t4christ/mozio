@@ -6,7 +6,7 @@ djangorestframework
 djangorestframework-jwt
 psycopg2-binary
 django-rest-swagger
-
+waitress
 
 
 
