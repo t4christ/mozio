@@ -59,7 +59,7 @@ AUTH_USER_MODEL = 'account.User'
 CORS_ORIGIN_ALLOW_ALL=True
 CORS_ALLOW_CREDENTIALS=True
 CORS_ORIGIN_WHITELIST=(
-        'localhost:8000',
+        'https://localhost:8000',
        'https://mozio-trans.herokuapp.com'
         )
 
