@@ -25,7 +25,7 @@ SECRET_KEY = ')px(xck&xknhi366030j*s-2(t-if*ua+-i%#f5!fg1wyuq&xe'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost','www.mozio-trans.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
