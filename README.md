@@ -32,11 +32,11 @@ Mozio  is an international platform that integrates transportation suppliers by 
 
 
 ## API Documentation
- Access api documentation through this link [Here](https://mozio-trans.herokuapp.com/api/swagger)
+ Access api documentation through this link [Here](https://mozio3.docs.apiary.io/#)
 
 
 ## Base Url
-Project base url can be accessed using this link [Here](https://mozio-trans.herokuapp.com/api/register)
+Project base url can be accessed using this link [Here](https://mozio-trans.herokuapp.com/api)
 
 ## Built With
 - python/django
