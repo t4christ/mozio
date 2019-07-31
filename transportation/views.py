@@ -19,23 +19,46 @@ from .serializers import (PolygonSerializer,RetrievePolygonSerializer)
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 
-class PolygonAPIView(ListAPIView):
+class HomeAPIView(APIView):
     permission_classes = (AllowAny,)
     serializer_class = RetrievePolygonSerializer
-    def get_queryset(self):
+    def get(self,request,format=None):
+        return Response({"Message":"You are welcome to mozio"},status=status.HTTP_200_OK)
 
-                polygons = Polygon.objects.all()
+
+
+class PolygonAPIView(APIView):
+    permission_classes = (AllowAny,)
+    serializer_class = RetrievePolygonSerializer
+    def get(self,request,format=None):
                 polygon_lon = self.request.query_params.get('lon', None)
                 polygon_lat = self.request.query_params.get('lat', None)
+                if 'polygon_query' in cache and polygon_lon and polygon_lat:
+                    # get results from cache
+                    queryset = cache.get('polygon_query')
+                    return Response(queryset, status=status.HTTP_200_OK)
+                elif 'polygon' in cache and polygon_lon == False and polygon_lat == False:
+                    queryset = cache.get('polygon')
+                    return Response(queryset, status=status.HTTP_200_OK)
+                
+                else:
+                    polygons = Polygon.objects.all()
 
-                if polygon_lon and polygon_lat is not None:
+                    if polygon_lon and polygon_lat is not None:
                         cordinates = fromstr(f"POINT({polygon_lon} {polygon_lat})", srid=4326)
-                        queryset = polygons.objects.filter(location=cordinates)
-                        return queryset
-                else:   
+                        polygons = Polygon.objects.filter(location=cordinates)
+                        serialized_polygon = serializers.serialize('python', polygons)
+                        queryset = [polygon for polygon in serialized_polygon]
+                        # store data in cache
+                        cache.set("polygon_query",queryset, timeout=CACHE_TTL)
+                        return Response(queryset, status=status.HTTP_200_OK)
+                    else:
+                        serialized_polygon = serializers.serialize('python', polygons)
+                        queryset = [polygon for polygon in serialized_polygon]
+                        cache.set("polygon",queryset, timeout=CACHE_TTL)
+                        return Response(queryset, status=status.HTTP_200_OK)
 
-                        return polygons
-    
+        
         
 
 

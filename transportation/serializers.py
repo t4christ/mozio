@@ -18,8 +18,7 @@ class PolygonSerializer(serializers.ModelSerializer):
 
 
 
-class RetrievePolygonSerializer(serializers.HyperlinkedModelSerializer):
-    provider = serializers.CharField(source="provider.username")
+class RetrievePolygonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Polygon

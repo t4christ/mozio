@@ -17,12 +17,11 @@ Mozio  is an international platform that integrates transportation suppliers by 
 - python manage.py runserver to get the server running.
 
 ## Running the test
-- Run 'python manage.py test to run all the test cases.
+- Run 'python manage.py test' to run all the test cases.
 
 ## Required Features
 - User can sign up.
 - User can sign in.
-- User can update account.
 - User can delete account.
 - User can post a polygon.
 - User can delete a polygon.
